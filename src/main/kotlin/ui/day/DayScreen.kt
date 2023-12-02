@@ -5,11 +5,12 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -55,6 +56,50 @@ fun DayScreen(
                 Text(
                     textAlign = TextAlign.Start,
                     text = it.description,
+                    fontSize = 22.sp
+                )
+                var showInput by remember {
+                    mutableStateOf(false)
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        textAlign = TextAlign.Start,
+                        text = "Input:",
+                        fontSize = 22.sp,
+                        color = Color.Red
+                    )
+                    Button(
+                        onClick = { showInput = !showInput }
+                    ) {
+                        Text(
+                            textAlign = TextAlign.Start,
+                            text = if (showInput) "Hide input" else "Show input",
+                            fontSize = 22.sp
+                        )
+                    }
+                }
+                if (showInput) {
+                    Text(
+                        modifier = Modifier.padding(top = 12.dp),
+                        textAlign = TextAlign.Start,
+                        text = it.input,
+                        fontSize = 22.sp
+                    )
+                }
+                Text(
+                    modifier = Modifier.padding(top = 12.dp),
+                    textAlign = TextAlign.Start,
+                    text = "Solution:",
+                    fontSize = 22.sp,
+                    color = Color.Red
+                )
+                Text(
+                    modifier = Modifier.padding(top = 12.dp),
+                    textAlign = TextAlign.Start,
+                    text = it.solution,
                     fontSize = 22.sp
                 )
                 Text(
