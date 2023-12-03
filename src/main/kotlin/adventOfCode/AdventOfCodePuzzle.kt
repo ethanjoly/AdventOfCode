@@ -9,7 +9,7 @@ abstract class AdventOfCodePuzzle {
     }
 
     val input: String by lazy {
-        this.javaClass.getResource("$basePath/input.txt")?.readText() ?: ""
+        this.javaClass.getResource("$basePath/input.txt")?.readText()?.replace("\r", "") ?: ""
     }
 
     val solution: String by lazy {

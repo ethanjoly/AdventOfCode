@@ -4,6 +4,7 @@ import adventOfCode.AdventOfCodeDay
 import adventOfCode.AdventOfCodeEvent
 import adventOfCode.event2023.day1.Day1
 import adventOfCode.event2023.day2.Day2
+import adventOfCode.event2023.day3.Day3
 
 object Event2023 : AdventOfCodeEvent() {
 
@@ -14,7 +15,8 @@ object Event2023 : AdventOfCodeEvent() {
     override val days: List<AdventOfCodeDay> by lazy {
         listOf(
             Day1,
-            Day2
+            Day2,
+            Day3
         )
     }
 }
