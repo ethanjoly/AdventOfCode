@@ -7,6 +7,7 @@ import adventOfCode.event2023.day2.Day2
 import adventOfCode.event2023.day3.Day3
 import adventOfCode.event2023.day4.Day4
 import adventOfCode.event2023.day5.Day5
+import adventOfCode.event2023.day6.Day6
 
 object Event2023 : AdventOfCodeEvent() {
 
@@ -20,7 +21,8 @@ object Event2023 : AdventOfCodeEvent() {
             Day2,
             Day3,
             Day4,
-            Day5
+            Day5,
+            Day6
         )
     }
 }
