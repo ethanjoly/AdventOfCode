@@ -89,19 +89,37 @@ fun DayScreen(
                         fontSize = 22.sp
                     )
                 }
-                Text(
-                    modifier = Modifier.padding(top = 12.dp),
-                    textAlign = TextAlign.Start,
-                    text = "Solution:",
-                    fontSize = 22.sp,
-                    color = Color.Red
-                )
-                Text(
-                    modifier = Modifier.padding(top = 12.dp),
-                    textAlign = TextAlign.Start,
-                    text = it.solution,
-                    fontSize = 22.sp
-                )
+                var showSolution by remember {
+                    mutableStateOf(false)
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        textAlign = TextAlign.Start,
+                        text = "Solution:",
+                        fontSize = 22.sp,
+                        color = Color.Red
+                    )
+                    Button(
+                        onClick = { showSolution = !showSolution }
+                    ) {
+                        Text(
+                            textAlign = TextAlign.Start,
+                            text = if (showSolution) "Hide solution" else "Show solution",
+                            fontSize = 22.sp
+                        )
+                    }
+                }
+                if (showSolution) {
+                    Text(
+                        modifier = Modifier.padding(top = 12.dp),
+                        textAlign = TextAlign.Start,
+                        text = it.solution,
+                        fontSize = 22.sp
+                    )
+                }
                 Text(
                     modifier = Modifier.padding(top = 12.dp),
                     textAlign = TextAlign.Start,

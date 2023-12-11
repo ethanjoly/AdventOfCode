@@ -1,9 +1,9 @@
-package adventOfCode.event2023.day10
+package adventOfCode.event2023.day10.puzzle1
 
 import adventOfCode.AdventOfCodePuzzle
 
 //-start-
-sealed class Tile(val row: Int, val col: Int) {
+private sealed class Tile(val row: Int, val col: Int) {
     val linkedTiles = mutableListOf<Tile>()
     var stepsFromStart = Int.MAX_VALUE
     abstract fun setConnectedTiles(map: List<List<Tile>>)
@@ -120,8 +120,6 @@ object Puzzle1 : AdventOfCodePuzzle() {
                 previousTile = currentTile
                 currentTile = it
             }
-        }
-        loopTiles.forEach {
         }
         loopTiles.maxOf { it.stepsFromStart }.toString()
     }

@@ -2,6 +2,8 @@ package adventOfCode.event2023.day10
 
 import adventOfCode.AdventOfCodeDay
 import adventOfCode.AdventOfCodePuzzle
+import adventOfCode.event2023.day10.puzzle1.Puzzle1
+import adventOfCode.event2023.day10.puzzle2.Puzzle2
 
 object Day10 : AdventOfCodeDay() {
 
