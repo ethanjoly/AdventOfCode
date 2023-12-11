@@ -14,16 +14,36 @@ abstract class AdventOfCodePuzzle {
 
     val solution: String by lazy {
         var solution = ""
+        var isInHeader = false
         var keepLine = false
+        val headerStartRegex = "^//-start-$".toRegex()
+        val headerEndRegex = "^//-end-$".toRegex()
         val startRegex = "^ {4}override val result: String by lazy \\{$".toRegex()
         val endRegex = "^ {4}}$".toRegex()
         val replaceRegex = "^ {8}".toRegex()
         this.javaClass.getResource("$basePath/solution.txt")?.readText()?.split("\n")?.forEach { line ->
-            if (endRegex.containsMatchIn(line)) keepLine = false
             if (keepLine) {
-                solution += "${line.replace(replaceRegex, "")}\n"
+                if (!isInHeader && endRegex.containsMatchIn(line)) {
+                    keepLine = false
+                } else if (headerEndRegex.containsMatchIn(line)) {
+                    solution += "\n"
+                    keepLine = false
+                }
             }
-            if (startRegex.containsMatchIn(line)) keepLine = true
+            if (keepLine) {
+                solution += if (isInHeader) {
+                    "${line}\n"
+                } else {
+                    "${line.replace(replaceRegex, "")}\n"
+                }
+            }
+            if (startRegex.containsMatchIn(line)) {
+                isInHeader = false
+                keepLine = true
+            } else if (headerStartRegex.containsMatchIn(line)) {
+                isInHeader = true
+                keepLine = true
+            }
         }
         solution
     }
